@@ -1,0 +1,22 @@
+<div class="container no-nav">
+	<h3 class="center-align">Cadastro</h3>
+	<form name="registerForm">
+		<div class="input-field">
+			<input id="name" type="text" name="name" ng-model="name" ng-required="true" placeholder="Nome completo">
+		</div>
+		<div class="input-field">
+			<input id="email" type="email" name="email" ng-model="email" ng-required="true" placeholder="E-mail">
+		</div>
+		<div class="input-field">
+			<input id="phone" type="text" name="phone" ng-model="phone" ng-required="true" restrict="reject" mask="(99) 99999-9999" placeholder="Telefone">
+		</div>
+		<div class="input-field">
+			<input id="password" type="password" name="password" ng-model="password" ng-required="true" ng-minlength="6" placeholder="Senha">
+		</div>
+		<p>
+			<input id="terms" type="checkbox" class="filled-in" name="terms" ng-model="terms" ng-required="true">
+			<label for="terms">Aceito os termos de uso do site</label>
+		</p>
+		<button class="btn waves-effect waves-light full-width" ng-disabled="registerForm.$invalid" ng-click="register(name, email, phone, password)">Criar conta</button>
+	</form>
+</div>

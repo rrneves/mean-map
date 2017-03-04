@@ -1,0 +1,18 @@
+<div class="container">
+	<div class="switch">
+		<label>
+			<input type="checkbox" name="notifications" ng-model="user.config.notifications" ng-change="updateConfig('notifications', user.config.notifications)">
+			<span class="lever"></span>
+			<span class="switch-label">Receber notificações no meu telefone</span>
+		</label>
+	</div>
+	<p>
+		<input id="statistics" type="checkbox" class="filled-in" name="statistics" ng-model="user.config.statistics" ng-change="updateConfig('statistics', user.config.statistics)">
+		<label for="statistics" class="black-label">Enviar estatísticas ao Mean Uber <span class="helper">Permite que saibamos conteúdos relacionados à suas viagens para ajudar com publicidade e outros meios de comunicação.</span></label>
+	</p>
+	<p>
+		<input id="promotional" type="checkbox" class="filled-in" name="promotional" ng-model="user.config.promotional" ng-change="updateConfig('promotional', user.config.promotional)">
+		<label for="promotional" class="black-label">Receber e-mails promocionais <span class="helper">A distribuição de e-mails relacionados a promoções é opcional, já os e-mails que contém comprovantes e recibos de viagens, são obrigatórios.</span></label>
+	</p>
+	<a href="#!/delete-account" class="btn waves-effect waves-light full-width btn-padding btn-delete">Apagar conta</a>
+</div>

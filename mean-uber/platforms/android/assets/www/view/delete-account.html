@@ -1,0 +1,13 @@
+<div class="container">
+	<h4 class="center-align">Confirmar exclusão</h4>
+	<p class="center-align text-muted">Vai embora, {{user.name.split(' ')[0]}}?! Muito triste que esteja indo, mas precisamos que confirme o seu número de telefone e a senha da conta para que possa continuar.</p>
+	<form>
+		<div class="input-field">
+			<input type="text" name="phone" ng-model="phone" ng-required="true" restrict="reject" mask="(99) 99999-9999" placeholder="Telefone">
+		</div>
+		<div class="input-field">
+			<input type="password" name="password" ng-model="password" ng-required="true" ng-minlength="6" placeholder="Senha">
+		</div>
+		<button class="btn waves-effect waves-light full-width btn-delete" ng-disabled="loginForm.$invalid" ng-click="deleteAccount(phone, password)">Confirmar</button>
+	</form>
+</div>

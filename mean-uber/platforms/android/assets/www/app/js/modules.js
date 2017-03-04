@@ -1,0 +1,1 @@
+var app = angular.module('meanUber', ['ngRoute', 'ngMap', 'ngCordova', 'ngMask', 'ngCroppie', 'naif.base64']);

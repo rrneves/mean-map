@@ -1,0 +1,14 @@
+<div class="container no-nav">
+	<h3 class="center-align">Mean Uber</h3>
+	<h5 class="center-align">viagens no seu horário</h5>
+	<form name="loginForm">
+		<div class="input-field">
+			<input type="text" name="phone" ng-model="phone" ng-required="true" restrict="reject" mask="(99) 99999-9999" placeholder="Telefone">
+		</div>
+		<div class="input-field">
+			<input type="password" name="password" ng-model="password" ng-required="true" ng-minlength="6" placeholder="Senha">
+		</div>
+		<button class="btn waves-effect waves-light full-width" ng-disabled="loginForm.$invalid" ng-click="login(phone, password)">Entrar</button>
+		<a href="#!/register" class="btn waves-effect waves-light full-width btn-padding">Criar conta</a>
+	</form>
+</div>

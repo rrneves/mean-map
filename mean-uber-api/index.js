@@ -1,0 +1,10 @@
+var express = require('express');
+var bodyParser = require('body-parser');
+var cors = require('cors');
+var app = express();
+app.use(bodyParser.json({limit: '50MB'}));
+app.use(cors());
+app.use(express.static('public'));
+var models = require('./models');
+var routes = require('./routes')(app, models);
+app.listen(3000);

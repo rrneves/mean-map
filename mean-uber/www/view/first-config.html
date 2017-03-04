@@ -1,0 +1,43 @@
+<div class="container">
+	<img src="app/images/user-default.png" width="100" height="100" class="circle center-block">
+	<h5 class="center-align">Boas vindas, pronto para começar?</h5>
+	<p class="center-align text-muted">{{user.name.split(' ')[0]}}, precisamos coletar algumas informações para que você obtenha a melhor experiência possível durante o uso do Mean Uber.</p>
+	<button ng-click="openHomeConfig()" class="btn waves-effect waves-light full-width">Começar</button>
+	<a href="#!/" class="btn waves-effect waves-light full-width btn-padding">Agora não</a>
+</div>
+<div id="home-config-modal" class="modal">
+	<div class="modal-content">
+		<h4>Adicionar casa</h4>
+		<p>Quando você for viajar, fica bem mais fácil já ter possíveis pontos de partida e destinos já configurados. Vamos começar por onde você mora:</p>
+		<form name="homeForm">
+			<div class="input-field">
+				<input type="text" name="address" ng-model="home" placeholder="Endereço da casa" places-auto-complete component-restrictions="{country: 'br'}" ng-required="true">
+			</div>
+			<button class="modal-close btn waves-effect waves-light full-width" ng-click="postAddress('Casa', home, true); openModal('#work-config-modal')" ng-disabled="homeForm.$invalid">Salvar</button>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button class="modal-close waves-effect btn-flat" ng-click="openModal('#work-config-modal')">Pular</button>
+	</div>
+</div>
+<div id="work-config-modal" class="modal">
+	<div class="modal-content">
+		<h4>Adicionar trabalho</h4>
+		<form name="workForm">
+			<div class="input-field">
+				<input type="text" name="address" ng-model="work" placeholder="Endereço do trabalho" places-auto-complete component-restrictions="{country: 'br'}" ng-required="true">
+			</div>
+			<button class="modal-close btn waves-effect waves-light full-width" ng-click="postAddress('Trabalho', work, true); openModal('#success-config-modal')" ng-disabled="workForm.$invalid">Salvar</button>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button class="modal-close waves-effect btn-flat" ng-click="openModal('#success-config-modal')">Pular</button>
+	</div>
+</div>
+<div id="success-config-modal" class="modal">
+	<div class="modal-content">
+		<h4>Sucesso</h4>
+		<p>Tudo certo, {{user.name.split(' ')[0]}}! Faça sua primeira viagem agora mesmo.</p>
+		<a href="#!/" class="modal-close btn waves-effect waves-light full-width">Ir ao mapa</a>
+	</div>
+</div>

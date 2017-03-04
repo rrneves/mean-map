@@ -1,0 +1,88 @@
+<form name="travelForm" class="box-form">
+	<input type="text" placeholder="Ponto de partida" places-auto-complete component-restrictions="{country: 'br'}" name="origin" ng-model="origin" ng-required="true">
+	<i class="material-icons">location_on</i>
+	<button type="button" class="btn-icon waves-effect" ng-click="openModal('#origin-modal')"><i class="material-icons">keyboard_arrow_down</i></button>
+	<input type="text" placeholder="Destino" places-auto-complete component-restrictions="{country: 'br'}" name="destination" ng-model="destination" ng-required="true">
+	<i class="material-icons">search</i>
+	<button type="button" class="btn-icon waves-effect" ng-click="openModal('#destination-modal')"><i class="material-icons">keyboard_arrow_down</i></button>
+</form>
+<ng-map center="{{user.location}}" disable-default-u-i="true">
+	<marker position="{{user.location}}"></marker>
+</ng-map>
+<div class="fixed-action-btn" style="bottom: 93px;">
+	<button ng-if="travelForm.$valid" class="btn-floating btn-large waves-effect btn-confirm" ng-click="openModal('#confirm-modal')"><i class="material-icons">done</i></button>
+</div>
+<div class="fixed-action-btn">
+	<button class="btn btn-floating btn-large waves-effect" ng-click="updateLocation()"><i class="material-icons">gps_fixed</i></button>
+</div>
+<div id="filter-modal" class="modal bottom-sheet modal-fixed-footer">
+	<div class="modal-content">
+		<h4>Filtro</h4>
+		<form>
+			<div class="switch">
+				<label>
+					<input type="checkbox">
+					<span class="lever"></span>
+					<span class="switch-label">Apenas motoristas com boas classificações</span>
+				</label>
+			</div>
+			<p>
+				<input id="premium" type="checkbox" class="filled-in">
+				<label for="premium" class="black-label">Mean Uber Premium <span class="helper">Apenas motoristas verificados pelo Mean Uber para garantir seu conforto absoluto (Taxas adicionais serão cobradas).</span>
+			</p>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button class="modal-close waves-effect btn-flat">Pronto</button>
+	</div>
+</div>
+<div id="origin-modal" class="modal modal-fixed-footer">
+	<div class="modal-content">
+		<h4>Ponto de partida</h4>
+		<div ng-hide="user.addresses.length">
+			<p class="center-align">Você ainda não possui nenhum endereço salvo.</p>
+			<a href="#!/add-address" class="btn waves-effect waves-light full-width modal-close">Adicionar um endereço</a>
+		</div>
+		<ul id="addresses" class="collection" ng-show="user.addresses.length">
+			<li class="collection-item avatar waves-effect modal-close" ng-repeat="address in user.addresses" ng-click="$parent.origin = address.address">
+				<i class="material-icons circle">location_on</i>
+				<span class="title">{{address.name}}</span>
+				<p class="address-description">{{address.address}}</p>
+			</li>
+		</ul>
+	</div>
+	<div class="modal-footer">
+		<button class="modal-close waves-effect btn-flat">Cancelar</button>
+	</div>
+</div>
+<div id="destination-modal" class="modal modal-fixed-footer">
+	<div class="modal-content">
+		<h4>Destino</h4>
+		<div ng-hide="user.addresses.length">
+			<p class="center-align">Você ainda não possui nenhum endereço salvo.</p>
+			<a href="#!/add-address" class="btn waves-effect waves-light full-width modal-close">Adicionar um endereço</a>
+		</div>
+		<ul id="addresses" class="collection" ng-show="user.addresses.length">
+			<li class="collection-item avatar waves-effect modal-close" ng-repeat="address in user.addresses" ng-click="$parent.destination = address.address">
+				<i class="material-icons circle">location_on</i>
+				<span class="title">{{address.name}}</span>
+				<p class="address-description">{{address.address}}</p>
+			</li>
+		</ul>
+	</div>
+	<div class="modal-footer">
+		<button class="modal-close waves-effect btn-flat">Cancelar</button>
+	</div>
+</div>
+<div id="confirm-modal" class="modal modal-fixed-footer">
+	<div class="modal-content">
+		<h4>Confirmar viagem</h4>
+		<img src="app/images/route.png" class="center-block" width="100" height="100">
+		<p><strong>Ponto de partida</strong>: {{origin}}</p>
+		<p><strong>Desinto</strong>: {{destination}}</p>
+		<button ng-click="confirmTravel(origin, destination)" class="modal-close btn waves-effect waves-light full-width">Confirmar</button>
+	</div>
+	<div class="modal-footer">
+		<button class="modal-close waves-effect btn-flat">Cancelar</button>
+	</div>
+</div>

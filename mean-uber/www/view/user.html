@@ -1,0 +1,13 @@
+<div class="container">
+	<a ng-href="{{user.photo}}" data-lightbox="profile-photo"><img ng-src="{{user.photo}}" width="150" height="150" class="circle center-block"></a>
+	<button class="btn-camera waves-effect center-block" ng-click="triggerUploadPhoto()"><i class="material-icons">camera_alt</i></button>
+	<input id="profile-img-upload" type="file" accept="image/*" ng-model="photo" base-sixty-four-input ng-change="uploadPhoto(photo)">
+	<form name="updateNameForm">
+		<div class="input-field button">
+			<input type="text" name="name" ng-value="user.name" ng-model="name" ng-required="true" placeholder="Nome completo">
+			<button class="btn-icon waves-effect" ng-click="updateNameForm.$valid ? updateName(name) : null"><i class="material-icons">edit</i></button>
+		</div>
+	</form>
+	<span class="helper">Leve em consideração colocar fotos que sejam visíveis, para ajudar o motorista à te identificar durante a corrida.</span>
+	<a href="#!/change-password" class="btn waves-effect waves-light full-width btn-padding">Alterar senha</a>
+</div>

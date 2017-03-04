@@ -1,0 +1,23 @@
+<div class="container" ng-hide="user.addresses.length">
+	<div ng-show="!user.addresses.length" class="message-cover">
+		<i class="material-icons center-align center-block">sentiment_dissatisfied</i>
+		<h5 class="center-align">Você ainda não adicionou nenhum endereço</h5>
+		<a href="#!/add-address" class="btn waves-effect waves-light full-width btn-padding">Adicionar um endereço</a>
+	</div>
+</div>
+<div class="container full-width" ng-show="user.addresses.length">
+	<ul id="addresses" class="collection">
+		<li class="collection-item avatar item-repeated" ng-repeat="address in user.addresses">
+			<i class="material-icons circle">location_on</i>
+			<span class="title">{{address.name}}</span>
+			<p class="address-description">{{address.address}}</p>
+			<div class="secondary-content">
+				<a ng-href="#!/edit-address/{{address._id}}" class="btn-icon waves-effect"><i class="material-icons">edit</i></a>
+				<button class="btn-icon waves-effect" ng-click="deleteAddress(address._id)"><i class="material-icons">delete</i></button>
+			</div>
+		</li>
+	</ul>
+</div>
+<div class="fixed-action-btn">
+	<a href="#!/add-address" class="btn btn-floating btn-large waves-effect"><i class="material-icons">add</i></a>
+</div>
